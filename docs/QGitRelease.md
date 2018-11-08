@@ -7,6 +7,12 @@ The **QGitRelease** class provides information about releases from GitHub.
 * [Public Functions](#public-functions)
 * [Member Function Documentation](#member-function-documentation)
 
+## Public Types
+
+| Type | Name                                                                    |
+|-----:|:------------------------------------------------------------------------|
+| enum | [**RequestError**](#request-error) { NoError, NetworkError, NoRelease } |
+
 ## Public Functions
 
 | Return type        | Data member                                                                       |
@@ -25,8 +31,18 @@ The **QGitRelease** class provides information about releases from GitHub.
 | int                | [**id**()](#id)                                                                   |
 | bool               | [**draft**()](#draft)                                                             |
 | bool               | [**prerelease**()](#prerelease)                                                   |
-| bool               | [**error**()](#error)                                                             |
+| RequestError       | [**error**()](#error)                                                             |
 | QString            | [**errorName**()](#error-name)                                                    |
+
+### <a id='request-error'/> enum QGitRelease::RequestError
+
+Indicates all possible error conditions found during the requesting release
+
+| Constant                             | Value | Description                                                  |
+|-------------------------------------:|:-----:|:-------------------------------------------------------------|
+| QOnlineTranslator::NoError           | 0     | No error condition	                                          |
+| QOnlineTranslator::NetworkError      | 1     | Network error                                                |
+| QOnlineTranslator::NoRelease         | 2     | There is no release with the specified number                |
 
 ## Member Function Documentation
 
@@ -87,7 +103,7 @@ Returns *true* if the release is marked as a pre-release, otherwise returns *fal
 ___
 
 ### <a id='error'/> int QGitRelease::error()
-Returns *true* if the release information could not be retrieved, otherwise returns *false*.
+Returns the error that was found during the processing of last release request. If no error was found, returns *NoError*.
 ___
 
 ### <a id='error-name'/> int QGitRelease::errorName()

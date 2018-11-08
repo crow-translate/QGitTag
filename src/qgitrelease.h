@@ -8,6 +8,12 @@
 class QGitRelease : QObject
 {
 public:
+    enum RequestError {
+        NoError,
+        NetworkError,
+        NoRelease
+    };
+
     QGitRelease(QObject *parent = nullptr);
     void get(const QString &owner, const QString &repo, int number = 0);
 
@@ -26,7 +32,7 @@ public:
     int id() const;
     bool draft() const;
     bool prerelease() const;
-    bool error() const;
+    RequestError error() const;
     QString errorName() const;
 
 private:
@@ -45,7 +51,7 @@ private:
     int m_id;
     bool m_draft;
     bool m_prerelease;
-    bool m_error;
+    RequestError m_error;
     QString m_errorName;
 };
 

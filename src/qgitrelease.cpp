@@ -13,7 +13,6 @@ QGitRelease::QGitRelease(QObject *parent) :
 
 void QGitRelease::get(const QString &owner, const QString &repo, int number)
 {
-
     QUrl apiUrl("https://api.github.com/repos/" + owner + "/" + repo + "/releases");
 
     // Send request
@@ -27,7 +26,7 @@ void QGitRelease::get(const QString &owner, const QString &repo, int number)
 
     // Check for network error
     if (reply->error() != QNetworkReply::NoError) {
-        m_error = true;
+        m_error = NetworkError;
         m_errorName = reply->errorString();
         return;
     }
@@ -38,7 +37,7 @@ void QGitRelease::get(const QString &owner, const QString &repo, int number)
 
     // Check if release number is out of bounds
     if (jsonData.at(number).type() == QJsonValue::Undefined) {
-        m_error = true;
+        m_error = NoRelease;
         m_errorName = "Release number " + QString::number(number) + " is missing";
     }
 
@@ -60,6 +59,8 @@ void QGitRelease::get(const QString &owner, const QString &repo, int number)
 
     foreach (auto asset, release["assets"].toArray())
         m_assets << QGitAsset(asset.toObject());
+
+    m_error = NoError;
 }
 
 QString QGitRelease::name() const
@@ -122,7 +123,7 @@ bool QGitRelease::prerelease() const
     return m_prerelease;
 }
 
-bool QGitRelease::error() const
+QGitRelease::RequestError QGitRelease::error() const
 {
     return m_error;
 }
