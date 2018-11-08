@@ -26,7 +26,8 @@
 #include "qgittag.h"
 
 QGitTag::QGitTag(QObject *parent) :
-    QObject (parent)
+    QObject (parent),
+    m_network (new QNetworkAccessManager(this))
 {
 
 }
@@ -39,7 +40,7 @@ void QGitTag::get(const QString &owner, const QString &repo, int number)
     QUrl apiUrl("https://api.github.com/repos/" + owner + "/" + repo + "/releases");
 
     // Send request
-    QNetworkReply *reply = manager->get(QNetworkRequest(apiUrl));
+    QNetworkReply *reply = m_network->get(QNetworkRequest(apiUrl));
     QObject::connect(reply, &QNetworkReply::finished, this, &QGitTag::parseReply);
 }
 
@@ -136,6 +137,7 @@ void QGitTag::parseReply()
     if (reply->error() != QNetworkReply::NoError) {
         m_error = NetworkError;
         m_errorName = reply->errorString();
+        reply->deleteLater();
         clearData();
         return;
     }
@@ -148,6 +150,7 @@ void QGitTag::parseReply()
     if (jsonData.at(m_tagNumber).type() == QJsonValue::Undefined) {
         m_error = NoRelease;
         m_errorName = "Release number " + QString::number(m_tagNumber) + " is missing";
+        reply->deleteLater();
         clearData();
         return;
     }
@@ -172,6 +175,7 @@ void QGitTag::parseReply()
         m_assets << QGitAsset(asset.toObject());
 
     m_error = NoError;
+    reply->deleteLater();
     emit tagReceived();
 }
 

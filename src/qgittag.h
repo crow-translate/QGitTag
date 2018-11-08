@@ -70,7 +70,7 @@ private slots:
 private:
     void clearData();
 
-    QNetworkAccessManager *manager;
+    QNetworkAccessManager *m_network;
 
     QString m_name;
     QString m_tagName;
