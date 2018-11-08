@@ -7,7 +7,7 @@
 Example:
 ```cpp
 QCoreApplication app(argc, argv);
-app.setApplicationVersion("0.9.0");
+QCoreApplication::setApplicationVersion("0.9.0");
 QTextStream out(stdout);
     
 QGitRelease release();

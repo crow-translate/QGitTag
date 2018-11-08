@@ -36,6 +36,8 @@ public:
     QString errorName() const;
 
 private:
+    void clearData();
+
     QString m_name;
     QString m_tagName;
     QString m_body;

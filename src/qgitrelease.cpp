@@ -13,6 +13,7 @@ QGitRelease::QGitRelease(QObject *parent) :
 
 void QGitRelease::get(const QString &owner, const QString &repo, int number)
 {
+    // Generate URL
     QUrl apiUrl("https://api.github.com/repos/" + owner + "/" + repo + "/releases");
 
     // Send request
@@ -28,6 +29,7 @@ void QGitRelease::get(const QString &owner, const QString &repo, int number)
     if (reply->error() != QNetworkReply::NoError) {
         m_error = NetworkError;
         m_errorName = reply->errorString();
+        clearData();
         return;
     }
 
@@ -39,6 +41,8 @@ void QGitRelease::get(const QString &owner, const QString &repo, int number)
     if (jsonData.at(number).type() == QJsonValue::Undefined) {
         m_error = NoRelease;
         m_errorName = "Release number " + QString::number(number) + " is missing";
+        clearData();
+        return;
     }
 
     QJsonObject release = jsonData.at(number).toObject();
@@ -57,7 +61,7 @@ void QGitRelease::get(const QString &owner, const QString &repo, int number)
     m_draft = release["draft"].toBool();
     m_prerelease = release["prerelease"].toBool();
 
-    foreach (auto asset, release["assets"].toArray())
+    foreach (const auto &asset, release["assets"].toArray())
         m_assets << QGitAsset(asset.toObject());
 
     m_error = NoError;
@@ -131,4 +135,22 @@ QGitRelease::RequestError QGitRelease::error() const
 QString QGitRelease::errorName() const
 {
     return m_errorName;
+}
+
+void QGitRelease::clearData()
+{
+    m_name.clear();
+    m_tagName.clear();
+    m_body.clear();
+    m_url.clear();
+    m_tarUrl.clear();
+    m_zipUrl.clear();
+    m_assets.clear();
+
+    m_createdAt = QDateTime();
+    m_publishedAt = QDateTime();
+
+    m_id = 0;
+    m_draft = false;
+    m_prerelease = false;
 }

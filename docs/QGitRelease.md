@@ -107,5 +107,5 @@ Returns the error that was found during the processing of last release request. 
 ___
 
 ### <a id='error-name'/> int QGitRelease::errorName()
-Returns error information.
+Returns a human-readable description of the last request error that occurred.
 ___
