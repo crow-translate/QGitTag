@@ -5,8 +5,15 @@
 
 #include "qgitrelease.h"
 
-QGitRelease::QGitRelease(const QString &owner, const QString &repo, int number)
+QGitRelease::QGitRelease(QObject *parent) :
+    QObject (parent)
 {
+
+}
+
+void QGitRelease::get(const QString &owner, const QString &repo, int number)
+{
+
     QUrl apiUrl("https://api.github.com/repos/" + owner + "/" + repo + "/releases");
 
     // Send request

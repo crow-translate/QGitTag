@@ -10,8 +10,9 @@ QCoreApplication app(argc, argv);
 app.setApplicationVersion("0.9.0");
 QTextStream out(stdout);
     
-QGitRelease release("Shatur95", "Crow-Translate");
-if (release.tagName() >= app.applicationVersion())
+QGitRelease release();
+release.get("Shatur95", "Crow-Translate")
+if (release.tagName() >= QCoreApplication::applicationVersion())
     out << "Update avaible: " + release.url().toString() << endl;
 ```
 

@@ -1,12 +1,15 @@
 #ifndef QGITRELEASE_H
 #define QGITRELEASE_H
 
+#include <QObject>
+
 #include "qgitasset.h"
 
-class QGitRelease
+class QGitRelease : QObject
 {
 public:
-    QGitRelease(const QString &owner, const QString &repo, int number = 0);
+    QGitRelease(QObject *parent = nullptr);
+    void get(const QString &owner, const QString &repo, int number = 0);
 
     QString name() const;
     QString tagName() const;

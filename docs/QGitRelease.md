@@ -11,7 +11,8 @@ The **QGitRelease** class provides information about releases from GitHub.
 
 | Return type        | Data member                                                                       |
 |-------------------:|:----------------------------------------------------------------------------------|
-|                    | [**QGitRelease**(const QString &owner, const QString &repo, int number = 0)](#c1) |
+|                    | [**QGitRelease**(QObject *parent = nullptr)](#constructor)                        |
+| void               | [**get**(const QString &owner, const QString &repo, int number = 0)](#get)        |
 | QString            | [**name**()](#name)                                                               |
 | QString            | [**tagName**()](#tag-name)                                                        |
 | QString            | [**body**()](#body)                                                               |
@@ -28,8 +29,12 @@ The **QGitRelease** class provides information about releases from GitHub.
 
 ## Member Function Documentation
 
-### <a id='c1'/> QGitRelease::QGitRelease(*const QString &owner, const QString &repo, int number = 0*)
-Constructs an object and query information about the release of the *number* from the *repo* of *owner*.
+### <a id='constructor'/> QGitRelease::QGitRelease(*const QString &owner, const QString &repo, int number = 0*)
+Constructs an empty QGitRelease with parent object *parent*.
+___
+
+### <a id='get'/> QGitRelease::get(*const QString &owner, const QString &repo, int number = 0*)
+Query information about the release of the *number* from the *repo* of *owner*. 0 is the last release.
 ___
 
 ### <a id='name'/> [QString](http://doc.qt.io/qt-5/qstring.html "Qt Documentation") QGitRelease::name()
