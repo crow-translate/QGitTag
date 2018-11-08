@@ -18,15 +18,15 @@
  *
  */
 
-#ifndef QGITRELEASE_H
-#define QGITRELEASE_H
+#ifndef QGITTAG_H
+#define QGITTAG_H
 
 #include <QObject>
 #include <QNetworkAccessManager>
 
 #include "qgitasset.h"
 
-class QGitRelease : QObject
+class QGitTag : public QObject
 {
     Q_OBJECT
 
@@ -37,7 +37,7 @@ public:
         NoRelease
     };
 
-    QGitRelease(QObject *parent = nullptr);
+    QGitTag(QObject *parent = nullptr);
     void get(const QString &owner, const QString &repo, int number = 0);
 
     QString name() const;
@@ -64,8 +64,10 @@ public:
 signals:
     void tagReceived();
 
-private:
+private slots:
     void parseReply();
+
+private:
     void clearData();
 
     QNetworkAccessManager *manager;
@@ -90,4 +92,4 @@ private:
     QString m_errorName;
 };
 
-#endif // QGITRELEASE_H
+#endif // QGITTAG_H

@@ -1,6 +1,6 @@
 # QGitAsset
 
-The **QGitAsset** class provides information about release assets.
+The **QGitAsset** class provides information about tag assets.
 
 ## Content
 
@@ -24,15 +24,15 @@ The **QGitAsset** class provides information about release assets.
 
 ## Detailed Description:
 
-The **QGitAsset** object can be obtained from the [QGitRelease](docs/QGitRelease.md "Class documentation") object, which contains a list of assets for a particular release.
+The **QGitAsset** object can be obtained from the [QGitTag](docs/QGitTag.md "Class documentation") object, which contains a list of assets for a particular release.
 
 Example:
 ```cpp
-QGitRelease release("Shatur95", "Crow-Translate");
+QGitTag tag("Shatur95", "Crow-Translate");
 QTextStream out(stdout);
-out << "Asset: " + release.assets().at(0).name() << endl; // Prints asset filename
-out << "Type: " + release.assets().at(0).type() << endl; // Prints asset type
-out << "Download Url: " + release.assets().at(0).url() << endl; // Prints download link
+out << "Asset: " + tag.assets().at(0).name() << endl; // Prints asset filename
+out << "Type: " + tag.assets().at(0).type() << endl; // Prints asset type
+out << "Download Url: " + tag.assets().at(0).url() << endl; // Prints download link
 ```
 ---
 
@@ -62,14 +62,14 @@ ___
 Returns the asset publication time.
 ___
 
-### <a id='id'/> int QGitRelease::id()
+### <a id='id'/> int QGitAsset::id()
 Returns the asset identifier.
 ___
 
-### <a id='size'/> int QGitRelease::size()
+### <a id='size'/> int QGitAsset::size()
 Returns the asset file size.
 ___
 
-### <a id='download-count'/> int QGitRelease::downloadCount()
+### <a id='download-count'/> int QGitAsset::downloadCount()
 Returns the number of asset downloads.
 ___

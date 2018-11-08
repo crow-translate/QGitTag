@@ -23,15 +23,15 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 
-#include "qgitrelease.h"
+#include "qgittag.h"
 
-QGitRelease::QGitRelease(QObject *parent) :
+QGitTag::QGitTag(QObject *parent) :
     QObject (parent)
 {
 
 }
 
-void QGitRelease::get(const QString &owner, const QString &repo, int number)
+void QGitTag::get(const QString &owner, const QString &repo, int number)
 {
     m_tagNumber = number;
 
@@ -40,45 +40,45 @@ void QGitRelease::get(const QString &owner, const QString &repo, int number)
 
     // Send request
     QNetworkReply *reply = manager->get(QNetworkRequest(apiUrl));
-    QObject::connect(reply, &QNetworkReply::finished, this, &QGitRelease::parseReply);
+    QObject::connect(reply, &QNetworkReply::finished, this, &QGitTag::parseReply);
 }
 
-QString QGitRelease::name() const
+QString QGitTag::name() const
 {
     return m_name;
 }
 
-QString QGitRelease::tagName() const
+QString QGitTag::tagName() const
 {
     return m_tagName;
 }
 
-QString QGitRelease::body() const
+QString QGitTag::body() const
 {
     return m_body;
 }
 
-QUrl QGitRelease::url() const
+QUrl QGitTag::url() const
 {
     return m_url;
 }
 
-QUrl QGitRelease::tarUrl() const
+QUrl QGitTag::tarUrl() const
 {
     return m_tarUrl;
 }
 
-QUrl QGitRelease::zipUrl() const
+QUrl QGitTag::zipUrl() const
 {
     return m_zipUrl;
 }
 
-QList<QGitAsset> QGitRelease::assets() const
+QList<QGitAsset> QGitTag::assets() const
 {
     return m_assets;
 }
 
-int QGitRelease::asset(const QString &contentType) const
+int QGitTag::asset(const QString &contentType) const
 {
     for (int i = 0; i < m_assets.size(); ++i) {
         if (m_assets.at(i).contentType() == contentType)
@@ -88,47 +88,47 @@ int QGitRelease::asset(const QString &contentType) const
     return -1; // No asset found
 }
 
-QDateTime QGitRelease::createdAt() const
+QDateTime QGitTag::createdAt() const
 {
     return m_createdAt;
 }
 
-QDateTime QGitRelease::publishedAt() const
+QDateTime QGitTag::publishedAt() const
 {
     return m_publishedAt;
 }
 
-int QGitRelease::id() const
+int QGitTag::id() const
 {
     return m_id;
 }
 
-int QGitRelease::tagNumber() const
+int QGitTag::tagNumber() const
 {
     return m_tagNumber;
 }
 
-bool QGitRelease::draft() const
+bool QGitTag::draft() const
 {
     return m_draft;
 }
 
-bool QGitRelease::prerelease() const
+bool QGitTag::prerelease() const
 {
     return m_prerelease;
 }
 
-QGitRelease::RequestError QGitRelease::error() const
+QGitTag::RequestError QGitTag::error() const
 {
     return m_error;
 }
 
-QString QGitRelease::errorName() const
+QString QGitTag::errorName() const
 {
     return m_errorName;
 }
 
-void QGitRelease::parseReply()
+void QGitTag::parseReply()
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
 
@@ -175,7 +175,7 @@ void QGitRelease::parseReply()
     emit tagReceived();
 }
 
-void QGitRelease::clearData()
+void QGitTag::clearData()
 {
     m_name.clear();
     m_tagName.clear();
