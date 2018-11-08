@@ -122,6 +122,16 @@ QList<QGitAsset> QGitRelease::assets() const
     return m_assets;
 }
 
+int QGitRelease::asset(const QString &contentType) const
+{
+    for (int i = 0; i < m_assets.size(); ++i) {
+        if (m_assets.at(i).contentType() == contentType)
+            return i;
+    }
+
+    return -1; // No asset found
+}
+
 QDateTime QGitRelease::createdAt() const
 {
     return m_createdAt;

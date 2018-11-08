@@ -46,6 +46,8 @@ public:
     QUrl zipUrl() const;
 
     QList<QGitAsset> assets() const;
+    int asset(const QString &contentType) const;
+
     QDateTime createdAt() const;
     QDateTime publishedAt() const;
 
