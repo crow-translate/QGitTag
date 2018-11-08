@@ -4,8 +4,11 @@ The **QGitRelease** class provides information about releases from GitHub.
 
 ## Content
 
+* [Public Types](#public-types)
 * [Public Functions](#public-functions)
-* [Member Function Documentation](#member-function-documentation)
+* [Signals](#signals)
+* [Member Types Documentation](#member-types-documentation)
+* [Member Functions Documentation](#member-functions-documentation)
 
 ## Public Types
 
@@ -35,6 +38,12 @@ The **QGitRelease** class provides information about releases from GitHub.
 | RequestError       | [**error**()](#error)                                                             |
 | QString            | [**errorName**()](#error-name)                                                    |
 
+## Signals
+
+| void | [*tagReceived**()](#tag-received) |
+
+## Member Type Documentation
+
 ### <a id='request-error'/> enum QGitRelease::RequestError
 
 Indicates all possible error conditions found during the requesting release
@@ -49,6 +58,10 @@ Indicates all possible error conditions found during the requesting release
 
 ### <a id='constructor'/> QGitRelease::QGitRelease(*const QString &owner, const QString &repo, int number = 0*)
 Constructs an empty QGitRelease with parent object *parent*.
+___
+
+### <a id='tag-received'/> signal QGitRelease::tagReceived()
+This signal is emitted when the reply has finished processing and parsed tag data.
 ___
 
 ### <a id='get'/> QGitRelease::get(*const QString &owner, const QString &repo, int number = 0*)

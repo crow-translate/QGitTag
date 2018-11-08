@@ -6,7 +6,7 @@ The **QGitAsset** class provides information about release assets.
 
 * [Public Functions](#public-functions)
 * [Detailed Description](#detailed-description)
-* [Member Function Documentation](#member-function-documentation)
+* [Member Functions Documentation](#member-functions-documentation)
 
 ## Public Functions
 
@@ -36,7 +36,7 @@ out << "Download Url: " + release.assets().at(0).url() << endl; // Prints downlo
 ```
 ---
 
-## Member Function Documentation
+## Member Functions Documentation
 
 ### <a id='c1'/> QGitAsset::QGitAsset(*const QJsonObject &asset*)
 Constructs an object from *asset*. Normally you don't need call this function at all.

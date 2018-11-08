@@ -22,11 +22,14 @@
 #define QGITRELEASE_H
 
 #include <QObject>
+#include <QNetworkAccessManager>
 
 #include "qgitasset.h"
 
 class QGitRelease : QObject
 {
+    Q_OBJECT
+
 public:
     enum RequestError {
         NoError,
@@ -52,13 +55,20 @@ public:
     QDateTime publishedAt() const;
 
     int id() const;
+    int tagNumber() const;
     bool draft() const;
     bool prerelease() const;
     RequestError error() const;
     QString errorName() const;
 
+signals:
+    void tagReceived();
+
 private:
+    void parseReply();
     void clearData();
+
+    QNetworkAccessManager *manager;
 
     QString m_name;
     QString m_tagName;
@@ -73,6 +83,7 @@ private:
     QDateTime m_publishedAt;
 
     int m_id;
+    int m_tagNumber;
     bool m_draft;
     bool m_prerelease;
     RequestError m_error;

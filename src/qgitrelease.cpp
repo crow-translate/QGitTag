@@ -33,58 +33,14 @@ QGitRelease::QGitRelease(QObject *parent) :
 
 void QGitRelease::get(const QString &owner, const QString &repo, int number)
 {
+    m_tagNumber = number;
+
     // Generate URL
     QUrl apiUrl("https://api.github.com/repos/" + owner + "/" + repo + "/releases");
 
     // Send request
-    QNetworkAccessManager manager;
-    QNetworkReply *reply = manager.get(QNetworkRequest(apiUrl));
-
-    // Wait for the response
-    QEventLoop event;
-    QObject::connect(reply, &QNetworkReply::finished, &event, &QEventLoop::quit);
-    event.exec();
-
-    // Check for network error
-    if (reply->error() != QNetworkReply::NoError) {
-        m_error = NetworkError;
-        m_errorName = reply->errorString();
-        clearData();
-        return;
-    }
-
-    // Convert to JsonArray
-    QJsonDocument jsonResponse = QJsonDocument::fromJson(reply->readAll());
-    QJsonArray jsonData = jsonResponse.array();
-
-    // Check if release number is out of bounds
-    if (jsonData.at(number).type() == QJsonValue::Undefined) {
-        m_error = NoRelease;
-        m_errorName = "Release number " + QString::number(number) + " is missing";
-        clearData();
-        return;
-    }
-
-    QJsonObject release = jsonData.at(number).toObject();
-    m_name = release["name"].toString();
-    m_tagName = release["tag_name"].toString();
-    m_body = release["body"].toString();
-
-    m_url = release["html_url"].toString();
-    m_tarUrl = release["tarball_url"].toString();
-    m_zipUrl = release["zipball_url"].toString();
-
-    m_createdAt = QDateTime::fromString(release["created_at"].toString(), Qt::ISODate);
-    m_publishedAt = QDateTime::fromString(release["published_at"].toString(), Qt::ISODate);
-
-    m_id = release["id"].toInt();
-    m_draft = release["draft"].toBool();
-    m_prerelease = release["prerelease"].toBool();
-
-    foreach (const auto &asset, release["assets"].toArray())
-        m_assets << QGitAsset(asset.toObject());
-
-    m_error = NoError;
+    QNetworkReply *reply = manager->get(QNetworkRequest(apiUrl));
+    QObject::connect(reply, &QNetworkReply::finished, this, &QGitRelease::parseReply);
 }
 
 QString QGitRelease::name() const
@@ -147,6 +103,11 @@ int QGitRelease::id() const
     return m_id;
 }
 
+int QGitRelease::tagNumber() const
+{
+    return m_tagNumber;
+}
+
 bool QGitRelease::draft() const
 {
     return m_draft;
@@ -165,6 +126,53 @@ QGitRelease::RequestError QGitRelease::error() const
 QString QGitRelease::errorName() const
 {
     return m_errorName;
+}
+
+void QGitRelease::parseReply()
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+
+    // Check for network error
+    if (reply->error() != QNetworkReply::NoError) {
+        m_error = NetworkError;
+        m_errorName = reply->errorString();
+        clearData();
+        return;
+    }
+
+    // Convert to JsonArray
+    QJsonDocument jsonResponse = QJsonDocument::fromJson(reply->readAll());
+    QJsonArray jsonData = jsonResponse.array();
+
+    // Check if release number is out of bounds
+    if (jsonData.at(m_tagNumber).type() == QJsonValue::Undefined) {
+        m_error = NoRelease;
+        m_errorName = "Release number " + QString::number(m_tagNumber) + " is missing";
+        clearData();
+        return;
+    }
+
+    QJsonObject release = jsonData.at(m_tagNumber).toObject();
+    m_name = release["name"].toString();
+    m_tagName = release["tag_name"].toString();
+    m_body = release["body"].toString();
+
+    m_url = release["html_url"].toString();
+    m_tarUrl = release["tarball_url"].toString();
+    m_zipUrl = release["zipball_url"].toString();
+
+    m_createdAt = QDateTime::fromString(release["created_at"].toString(), Qt::ISODate);
+    m_publishedAt = QDateTime::fromString(release["published_at"].toString(), Qt::ISODate);
+
+    m_id = release["id"].toInt();
+    m_draft = release["draft"].toBool();
+    m_prerelease = release["prerelease"].toBool();
+
+    foreach (const auto &asset, release["assets"].toArray())
+        m_assets << QGitAsset(asset.toObject());
+
+    m_error = NoError;
+    emit tagReceived();
 }
 
 void QGitRelease::clearData()
