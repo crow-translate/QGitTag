@@ -28,7 +28,7 @@ void QGitRelease::get(const QString &owner, const QString &repo, int number)
     // Check for network error
     if (reply->error() != QNetworkReply::NoError) {
         m_error = true;
-        m_body = reply->errorString();
+        m_errorName = reply->errorString();
         return;
     }
 
@@ -39,7 +39,7 @@ void QGitRelease::get(const QString &owner, const QString &repo, int number)
     // Check if release number is out of bounds
     if (jsonData.at(number).type() == QJsonValue::Undefined) {
         m_error = true;
-        m_body = "Release number " + QString::number(number) + " is missing";
+        m_errorName = "Release number " + QString::number(number) + " is missing";
     }
 
     QJsonObject release = jsonData.at(number).toObject();
@@ -125,4 +125,9 @@ bool QGitRelease::prerelease() const
 bool QGitRelease::error() const
 {
     return m_error;
+}
+
+QString QGitRelease::errorName() const
+{
+    return m_errorName;
 }

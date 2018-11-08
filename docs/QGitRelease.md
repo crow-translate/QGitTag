@@ -26,6 +26,7 @@ The **QGitRelease** class provides information about releases from GitHub.
 | bool               | [**draft**()](#draft)                                                             |
 | bool               | [**prerelease**()](#prerelease)                                                   |
 | bool               | [**error**()](#error)                                                             |
+| QString            | [**errorName**()](#error-name)                                                    |
 
 ## Member Function Documentation
 
@@ -85,6 +86,10 @@ ___
 Returns *true* if the release is marked as a pre-release, otherwise returns *false*.
 ___
 
-### <a id='error'/> int QGitRelease::prerelease()
+### <a id='error'/> int QGitRelease::error()
 Returns *true* if the release information could not be retrieved, otherwise returns *false*.
+___
+
+### <a id='error-name'/> int QGitRelease::errorName()
+Returns error information.
 ___

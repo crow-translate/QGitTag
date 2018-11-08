@@ -27,6 +27,7 @@ public:
     bool draft() const;
     bool prerelease() const;
     bool error() const;
+    QString errorName() const;
 
 private:
     QString m_name;
@@ -45,6 +46,7 @@ private:
     bool m_draft;
     bool m_prerelease;
     bool m_error;
+    QString m_errorName;
 };
 
 #endif // QGITRELEASE_H
