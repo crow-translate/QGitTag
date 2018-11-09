@@ -26,10 +26,8 @@
 #include "qgittag.h"
 
 QGitTag::QGitTag(QObject *parent) :
-    QObject (parent),
-    m_network (new QNetworkAccessManager(this))
+    QObject (parent)
 {
-
 }
 
 void QGitTag::get(const QString &owner, const QString &repo, int number)
@@ -40,7 +38,7 @@ void QGitTag::get(const QString &owner, const QString &repo, int number)
     QUrl apiUrl("https://api.github.com/repos/" + owner + "/" + repo + "/releases");
 
     // Send request
-    QNetworkReply *reply = m_network->get(QNetworkRequest(apiUrl));
+    QNetworkReply *reply = m_network.get(QNetworkRequest(apiUrl));
     QObject::connect(reply, &QNetworkReply::finished, this, &QGitTag::parseReply);
 }
 
