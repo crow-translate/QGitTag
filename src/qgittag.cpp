@@ -137,7 +137,7 @@ void QGitTag::parseReply()
     if (reply->error() != QNetworkReply::NoError) {
         m_error = NetworkError;
         m_errorName = reply->errorString();
-        reply->deleteLater();
+        delete reply;
         clearData();
         return;
     }
@@ -175,7 +175,7 @@ void QGitTag::parseReply()
         m_assets << QGitAsset(asset.toObject());
 
     m_error = NoError;
-    reply->deleteLater();
+    delete reply;
     emit requestFinished();
 }
 
