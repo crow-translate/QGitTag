@@ -62,7 +62,7 @@ public:
     QString errorName() const;
 
 signals:
-    void tagReceived();
+    void requestFinished();
 
 private slots:
     void parseReply();

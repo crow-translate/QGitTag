@@ -176,7 +176,7 @@ void QGitTag::parseReply()
 
     m_error = NoError;
     reply->deleteLater();
-    emit tagReceived();
+    emit requestFinished();
 }
 
 void QGitTag::clearData()
