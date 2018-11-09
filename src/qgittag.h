@@ -49,7 +49,7 @@ public:
     QUrl zipUrl() const;
 
     QList<QGitAsset> assets() const;
-    int asset(const QString &str) const;
+    int assetId(const QString &str) const;
 
     QDateTime createdAt() const;
     QDateTime publishedAt() const;

@@ -79,7 +79,7 @@ QList<QGitAsset> QGitTag::assets() const
     return m_assets;
 }
 
-int QGitTag::asset(const QString &str) const
+int QGitTag::assetId(const QString &str) const
 {
     for (int i = 0; i < m_assets.size(); ++i) {
         if (m_assets.at(i).name().contains(str))
