@@ -29,7 +29,7 @@ The **QGitRelease** class provides information about releases from GitHub.
 | QUrl               | [**tarUrl**()](#tar-url)                                                          |
 | QUrl               | [**zipUrl**()](#zip-url)                                                          |
 | QList\<QGitAsset\> | [**assets**()](#assets)                                                           |
-| int                | [**asset**(const QString &contentType)](#asset)                                   |
+| int                | [**asset**(const QString &str)](#asset)                                           |
 | QDateTime          | [**createdAt**()](#created-at)                                                    |
 | QDateTime          | [**publishedAt**()](#published-at)                                                |
 | int                | [**id**()](#id)                                                                   |
@@ -96,8 +96,8 @@ ___
 Returns the release assets represented by [QGitAsset](QGitAsset.md "Class documentation").
 ___
 
-### <a id='asset'/> int QGitRelease::asset(*const QString &contentType*)
-Returns the asset number with the corresponding *contentType*. If such an asset is not found, returns -1.
+### <a id='asset'/> int QGitRelease::asset(*const QString &str*)
+Returns the first asset number that constains *str*. If such an asset is not found, returns -1.
 ___
 
 ### <a id='created-at'/> [QDateTime](https://doc.qt.io/qt-5/qdatetime.html "Qt Documentation") QGitRelease::createdAt()

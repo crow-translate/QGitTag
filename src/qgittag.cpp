@@ -79,10 +79,10 @@ QList<QGitAsset> QGitTag::assets() const
     return m_assets;
 }
 
-int QGitTag::asset(const QString &contentType) const
+int QGitTag::asset(const QString &str) const
 {
     for (int i = 0; i < m_assets.size(); ++i) {
-        if (m_assets.at(i).contentType() == contentType)
+        if (m_assets.at(i).name().contains(str))
             return i;
     }
 
@@ -131,7 +131,7 @@ QString QGitTag::errorName() const
 
 void QGitTag::parseReply()
 {
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    auto *reply = qobject_cast<QNetworkReply *>(sender());
 
     // Check for network error
     if (reply->error() != QNetworkReply::NoError) {
