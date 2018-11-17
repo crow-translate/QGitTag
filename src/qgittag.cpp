@@ -169,7 +169,7 @@ void QGitTag::parseReply()
     m_draft = release["draft"].toBool();
     m_prerelease = release["prerelease"].toBool();
 
-    foreach (const auto &asset, release["assets"].toArray())
+    foreach (const QJsonValue &asset, release["assets"].toArray())
         m_assets << QGitAsset(asset.toObject());
 
     m_error = NoError;
