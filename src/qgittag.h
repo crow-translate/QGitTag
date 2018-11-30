@@ -84,12 +84,12 @@ private:
     QDateTime m_createdAt;
     QDateTime m_publishedAt;
 
-    int m_id;
-    int m_tagNumber;
-    bool m_draft;
-    bool m_prerelease;
+    int m_id = 0;
+    int m_tagNumber = 0;
+    bool m_draft = false;
+    bool m_prerelease = false;
 
-    RequestError m_error;
+    RequestError m_error = NoError;
     QString m_errorName;
 };
 
