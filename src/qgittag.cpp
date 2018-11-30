@@ -191,6 +191,7 @@ void QGitTag::clearData()
     m_publishedAt = QDateTime();
 
     m_id = 0;
+    m_tagNumber = 0;
     m_draft = false;
     m_prerelease = false;
 }

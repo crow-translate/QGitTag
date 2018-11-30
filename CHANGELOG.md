@@ -6,8 +6,15 @@ All notable changes to this project will be documented in this file. This projec
 
 [Full Changelog](https://github.com/Shatur95/QGitTag/compare/1.0.1...HEAD)
 
+_No unreleased changes yet_
+
+## [1.0.1](https://github.com/Shatur95/QGitTag/tree/1.0.1) (2018-12-01)
+
+[Full Changelog](https://github.com/Shatur95/QGitTag/compare/1.0.0...1.0.1)
+
 **Changed**
 
+-   Clear tag number on error.
 -   Initialize variables with default values ​​during object creation.
 
 ## 1.0.0 (2018-11-17)
