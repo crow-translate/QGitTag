@@ -5,6 +5,7 @@
 **QGitTag** is a library for **Qt5** that uses the GitHub API to provide information about releases that can be used to check for updates. [Detailed documentation](docs/QGitTag.md "Class documentation").
 
 Example:
+
 ```cpp
 QCoreApplication app(argc, argv);
 QCoreApplication::setApplicationVersion("0.9.0");
@@ -17,7 +18,6 @@ if (tag.tagName() >= QCoreApplication::applicationVersion())
 ```
 
 For real example of usage you can look into my other project: [Crow Translate](https://github.com/Shatur95/CrowTranslate "A simple and lightweight translator that allows to translate and say the selected text using the Google Translate API").
-
 
 ## Installation
 
