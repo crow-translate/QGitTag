@@ -1,7 +1,7 @@
 # QGitTag
 
 [![GitHub (pre-)release](https://img.shields.io/github/release/Shatur95/QGitTag/all.svg)](https://github.com/Shatur95/QGitTag/releases)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/67f76adb276943cb93b969068f053f31)](https://www.codacy.com/app/Shatur95/QOnlineTranslator?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Shatur95/QOnlineTranslator&amp;utm_campaign=Badge_Grade)
+[![Codacy grade](https://img.shields.io/codacy/grade/7f0c4a716e5c48a4a02f0063af77c025.svg)](https://app.codacy.com/project/Shatur95/QGitTag/dashboard)
 
 **QGitTag** is a library for **Qt5** that uses the GitHub API to provide information about releases that can be used to check for updates. [Detailed documentation](docs/QGitTag.md "Class documentation").
 
