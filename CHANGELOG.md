@@ -16,6 +16,7 @@ _No unreleased changes yet_
 
 -   Clear tag number on error.
 -   Initialize variables with default values ​​during object creation.
+-   Use `deleteLater()`.
 
 ## 1.0.0 (2018-11-17)
 
