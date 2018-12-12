@@ -40,8 +40,8 @@ The **QGitRelease** class provides information about releases from GitHub.
 
 ## Signals
 
-\|-----:\|:------------------------------------------\|
-| void | [\*requestFinished\*\*()](#request-finished) \|
+|-----:|:-----------------------------------------|
+| void | [*requestFinished*()](#request-finished) |
 
 ## Member Type Documentation
 
@@ -162,5 +162,3 @@ Returns the error that was found during the processing of last release request. 
 ### <a id='error-name'/> int QGitRelease::errorName()
 
 Returns a human-readable description of the last request error that occurred.
-
-* * *

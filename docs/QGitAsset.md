@@ -24,7 +24,7 @@ The **QGitAsset** class provides information about tag assets.
 
 ## Detailed Description:
 
-The **QGitAsset** object can be obtained from the [QGitTag](docs/QGitTag.md "Class documentation") object, which contains a list of assets for a particular release.
+A **QGitAsset** object can be obtained from the [QGitTag](docs/QGitTag.md "Class documentation") object, which contains a list of assets for a particular release.
 
 Example:
 
@@ -90,6 +90,4 @@ Returns the asset file size.
 
 ### <a id='download-count'/> int QGitAsset::downloadCount()
 
-Returns the number of asset downloads.
-
-* * *
+Returns the number of the the asset downloads.
