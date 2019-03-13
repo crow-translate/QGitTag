@@ -20,6 +20,8 @@
 
 #include "qgitasset.h"
 
+#include <QJsonObject>
+
 QGitAsset::QGitAsset(const QJsonObject &asset)
 {
     m_contentType = asset["name"].toString();

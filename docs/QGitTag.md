@@ -41,7 +41,7 @@ The **QGitRelease** class provides information about releases from GitHub.
 ## Signals
 
 |-----:|:-----------------------------------------|
-| void | [*requestFinished*()](#request-finished) |
+| void | [*finished*()](#finished) |
 
 ## Member Type Documentation
 
@@ -63,7 +63,7 @@ Constructs an empty QGitRelease with parent object _parent_.
 
 * * *
 
-### <a id='request-finished'/> signal QGitRelease::requestFinished()
+### <a id='finished'/> signal QGitRelease::finished()
 
 This signal is emitted when the reply has finished processing and parsed tag data.
 

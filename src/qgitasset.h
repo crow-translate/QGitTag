@@ -21,10 +21,10 @@
 #ifndef QGITASSET_H
 #define QGITASSET_H
 
-#include <QString>
-#include <QJsonObject>
 #include <QDateTime>
 #include <QUrl>
+
+class QJsonObject;
 
 class QGitAsset
 {

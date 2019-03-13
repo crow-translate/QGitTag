@@ -22,9 +22,11 @@
 #define QGITTAG_H
 
 #include <QObject>
-#include <QNetworkAccessManager>
 
 #include "qgitasset.h"
+
+class QNetworkAccessManager;
+class QNetworkReply;
 
 class QGitTag : public QObject
 {
@@ -68,9 +70,9 @@ private slots:
     void parseReply();
 
 private:
-    void clearData();
+    void processError(QNetworkReply *reply);
 
-    QNetworkAccessManager m_network{this};
+    QNetworkAccessManager *m_network;
 
     QString m_name;
     QString m_tagName;
