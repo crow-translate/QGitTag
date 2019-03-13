@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2018 Hennadii Chernyshchyk <genaloner@gmail.com>
+ *  Copyright © 2018-2019 Hennadii Chernyshchyk <genaloner@gmail.com>
  *
  *  This file is part of Crow Translate.
  *
@@ -174,7 +174,7 @@ void QGitTag::parseReply()
 
     m_error = NoError;
     reply->deleteLater();
-    emit requestFinished();
+    emit finished();
 }
 
 void QGitTag::processError(QNetworkReply *reply)
@@ -196,5 +196,5 @@ void QGitTag::processError(QNetworkReply *reply)
     m_prerelease = false;
 
     reply->deleteLater();
-    emit requestFinished();
+    emit finished();
 }

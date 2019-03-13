@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2018 Hennadii Chernyshchyk <genaloner@gmail.com>
+ *  Copyright © 2018-2019 Hennadii Chernyshchyk <genaloner@gmail.com>
  *
  *  This file is part of Crow Translate.
  *
@@ -64,7 +64,7 @@ public:
     QString errorName() const;
 
 signals:
-    void requestFinished();
+    void finished();
 
 private slots:
     void parseReply();
