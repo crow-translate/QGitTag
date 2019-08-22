@@ -36,7 +36,7 @@ The **QGitRelease** class provides information about releases from GitHub.
 |                  bool | [**draft**()](#draft)                                                      |
 |                  bool | [**prerelease**()](#prerelease)                                            |
 |          RequestError | [**error**()](#error)                                                      |
-|               QString | [**errorName**()](#error-name)                                             |
+|               QString | [**errorString**()](#error-string)                                             |
 
 ## Signals
 
@@ -159,6 +159,6 @@ Returns the error that was found during the processing of last release request. 
 
 * * *
 
-### <a id='error-name'/> int QGitRelease::errorName()
+### <a id='error-string'/> int QGitRelease::errorString()
 
 Returns a human-readable description of the last request error that occurred.

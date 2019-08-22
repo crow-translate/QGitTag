@@ -60,17 +60,18 @@ public:
     int tagNumber() const;
     bool draft() const;
     bool prerelease() const;
+
     RequestError error() const;
-    QString errorName() const;
+    QString errorString() const;
 
 signals:
     void finished();
 
 private slots:
-    void parseReply();
+    void parseReply(QNetworkReply *reply);
 
 private:
-    void processError(QNetworkReply *reply);
+    void setError(RequestError errorType, const QString &errorString);
 
     QNetworkAccessManager *m_network;
 
@@ -92,7 +93,7 @@ private:
     bool m_prerelease = false;
 
     RequestError m_error = NoError;
-    QString m_errorName;
+    QString m_errorString;
 };
 
 #endif // QGITTAG_H

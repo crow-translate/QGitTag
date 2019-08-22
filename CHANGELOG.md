@@ -4,9 +4,18 @@ All notable changes to this project will be documented in this file. This projec
 
 ## [Unreleased](https://github.com/crow-translate/QGitTag/tree/HEAD)
 
-[Full Changelog](https://github.com/crow-translate/QGitTag/compare/1.0.2...HEAD)
+[Full Changelog](https://github.com/crow-translate/QGitTag/compare/1.0.3...HEAD)
 
 _No unreleased changes yet_
+
+## [1.0.3](https://github.com/crow-translate/QGitTag/tree/1.0.3) (2019-08-22)
+
+[Full Changelog](https://github.com/crow-translate/QGitTag/compare/1.0.2...1.0.3)
+
+**Changed**
+
+-   Add the ability to translate release number error.
+-   Rename errorName() to errorString().
 
 ## [1.0.2](https://github.com/crow-translate/QGitTag/tree/1.0.2) (2019-03-13)
 

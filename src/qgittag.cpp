@@ -19,7 +19,6 @@
  */
 
 #include <QNetworkReply>
-#include <QEventLoop>
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QJsonObject>
@@ -40,8 +39,8 @@ void QGitTag::get(const QString &owner, const QString &repo, int number)
     QUrl apiUrl("https://api.github.com/repos/" + owner + "/" + repo + "/releases");
 
     // Send request
-    QNetworkReply *reply = m_network->get(QNetworkRequest(apiUrl));
-    QObject::connect(reply, &QNetworkReply::finished, this, &QGitTag::parseReply);
+    m_network->get(QNetworkRequest(apiUrl));
+    QObject::connect(m_network, &QNetworkAccessManager::finished, this, &QGitTag::parseReply);
 }
 
 QString QGitTag::name() const
@@ -124,20 +123,18 @@ QGitTag::RequestError QGitTag::error() const
     return m_error;
 }
 
-QString QGitTag::errorName() const
+QString QGitTag::errorString() const
 {
-    return m_errorName;
+    return m_errorString;
 }
 
-void QGitTag::parseReply()
+void QGitTag::parseReply(QNetworkReply *reply)
 {
-    auto *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
 
     // Check for network error
     if (reply->error() != QNetworkReply::NoError) {
-        m_error = NetworkError;
-        m_errorName = reply->errorString();
-        processError(reply);
+        setError(NetworkError, reply->errorString());
         return;
     }
 
@@ -145,11 +142,9 @@ void QGitTag::parseReply()
     QJsonDocument jsonResponse = QJsonDocument::fromJson(reply->readAll());
     QJsonArray jsonData = jsonResponse.array();
 
-    // Check if release number is out of bounds
+    // Check if release number exists
     if (jsonData.at(m_tagNumber).type() == QJsonValue::Undefined) {
-        m_error = NoRelease;
-        m_errorName = "Release number " + QString::number(m_tagNumber) + " is missing";
-        processError(reply);
+        setError(NoRelease, tr("Release number %1 is missing").arg(m_tagNumber));
         return;
     }
 
@@ -173,12 +168,14 @@ void QGitTag::parseReply()
         m_assets << QGitAsset(asset.toObject());
 
     m_error = NoError;
-    reply->deleteLater();
     emit finished();
 }
 
-void QGitTag::processError(QNetworkReply *reply)
+void QGitTag::setError(RequestError errorType, const QString &errorString)
 {
+    m_error = errorType;
+    m_errorString = errorString;
+
     m_name.clear();
     m_tagName.clear();
     m_body.clear();
@@ -195,6 +192,5 @@ void QGitTag::processError(QNetworkReply *reply)
     m_draft = false;
     m_prerelease = false;
 
-    reply->deleteLater();
     emit finished();
 }
