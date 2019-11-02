@@ -25,10 +25,10 @@
 
 #include "qgittag.h"
 
-QGitTag::QGitTag(QObject *parent) :
-    QObject (parent)
+QGitTag::QGitTag(QObject *parent)
+    : QObject (parent)
+    , m_network(new QNetworkAccessManager(this))
 {
-    m_network = new QNetworkAccessManager(this);
 }
 
 void QGitTag::get(const QString &owner, const QString &repo, int number)
