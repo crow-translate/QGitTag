@@ -12,10 +12,14 @@ _No unreleased changes yet_
 
 [Full Changelog](https://github.com/crow-translate/QGitTag/compare/1.0.2...1.0.3)
 
+**Added**
+
+-   The ability to translate release number error.
+
 **Changed**
 
--   Add the ability to translate release number error.
 -   Rename errorName() to errorString().
+-   Small refactorings.
 
 ## [1.0.2](https://github.com/crow-translate/QGitTag/tree/1.0.2) (2019-03-13)
 
