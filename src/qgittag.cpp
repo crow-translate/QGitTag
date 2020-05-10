@@ -149,22 +149,22 @@ void QGitTag::parseReply(QNetworkReply *reply)
     }
 
     QJsonObject release = jsonData.at(m_tagNumber).toObject();
-    m_name = release["name"].toString();
-    m_tagName = release["tag_name"].toString();
-    m_body = release["body"].toString();
+    m_name = release[QStringLiteral("name")].toString();
+    m_tagName = release[QStringLiteral("tag_name")].toString();
+    m_body = release[QStringLiteral("body")].toString();
 
-    m_url = release["html_url"].toString();
-    m_tarUrl = release["tarball_url"].toString();
-    m_zipUrl = release["zipball_url"].toString();
+    m_url = release[QStringLiteral("html_url")].toString();
+    m_tarUrl = release[QStringLiteral("tarball_url")].toString();
+    m_zipUrl = release[QStringLiteral("zipball_url")].toString();
 
-    m_createdAt = QDateTime::fromString(release["created_at"].toString(), Qt::ISODate);
-    m_publishedAt = QDateTime::fromString(release["published_at"].toString(), Qt::ISODate);
+    m_createdAt = QDateTime::fromString(release[QStringLiteral("created_at")].toString(), Qt::ISODate);
+    m_publishedAt = QDateTime::fromString(release[QStringLiteral("published_at")].toString(), Qt::ISODate);
 
-    m_id = release["id"].toInt();
-    m_draft = release["draft"].toBool();
-    m_prerelease = release["prerelease"].toBool();
+    m_id = release[QStringLiteral("id")].toInt();
+    m_draft = release[QStringLiteral("draft")].toBool();
+    m_prerelease = release[QStringLiteral("prerelease")].toBool();
 
-    for (const QJsonValueRef asset : release["assets"].toArray())
+    for (const QJsonValueRef asset : release[QStringLiteral("assets")].toArray())
         m_assets << QGitAsset(asset.toObject());
 
     m_error = NoError;

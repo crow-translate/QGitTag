@@ -11,7 +11,7 @@ Example:
 QCoreApplication app(argc, argv);
 QCoreApplication::setApplicationVersion("0.9.0");
 QTextStream out(stdout);
-    
+
 QGitTag tag();
 tag.get("crow-translate", "Crow-Translate")
 if (tag.tagName() >= QCoreApplication::applicationVersion())
