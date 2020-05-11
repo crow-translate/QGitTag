@@ -46,31 +46,31 @@ Constructs an object from _asset_. Normally you don't need call this function at
 
 ---
 
-### <a id='name'/> \[QString](http&#x3A;//doc.qt.io/qt-5/qstring.html "Qt Documentation") QGitAsset::name()
+### <a id='name'/> [QString](https://doc.qt.io/qt-5/qstring.html "Qt Documentation") QGitAsset::name()
 
 Returns the name of the asset file.
 
 ---
 
-### <a id='content-type'/> \[QString](http&#x3A;//doc.qt.io/qt-5/qstring.html "Qt Documentation") QGitAsset::contentType()
+### <a id='content-type'/> [QString](https://doc.qt.io/qt-5/qstring.html "Qt Documentation") QGitAsset::contentType()
 
 Returns the asset MIME-type.
 
 ---
 
-### <a id='url'/> \[QString](http&#x3A;//doc.qt.io/qt-5/qstring.html "Qt Documentation") QGitAsset::url()
+### <a id='url'/> [QString](https://doc.qt.io/qt-5/qstring.html "Qt Documentation") QGitAsset::url()
 
 Returns the asset download link.
 
 ---
 
-### <a id='created-at'/> \[QDateTime](https&#x3A;//doc.qt.io/qt-5/qdatetime.html "Qt Documentation") QGitAsset::createdAt()
+### <a id='created-at'/> [QDateTime](https://doc.qt.io/qt-5/qdatetime.html "Qt Documentation") QGitAsset::createdAt()
 
 Returns the asset creation time.
 
 ---
 
-### <a id='published-at'/> \[QDateTime](https&#x3A;//doc.qt.io/qt-5/qdatetime.html "Qt Documentation") QGitAsset::publishedAt()
+### <a id='published-at'/> [QDateTime](https://doc.qt.io/qt-5/qdatetime.html "Qt Documentation") QGitAsset::publishedAt()
 
 Returns the asset publication time.
 

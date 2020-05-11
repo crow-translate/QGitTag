@@ -76,45 +76,45 @@ Query information about the release of the _number_ from the _repo_ of _owner_. 
 
 ---
 
-### <a id='name'/> \[QString](http&#x3A;//doc.qt.io/qt-5/qstring.html "Qt Documentation") QGitRelease::name()
+### <a id='name'/> [QString](https://doc.qt.io/qt-5/qstring.html "Qt Documentation") QGitRelease::name()
 
 Returns the release name.
 
 ---
 
-### <a id='tag-name'/> \[QString](http&#x3A;//doc.qt.io/qt-5/qstring.html "Qt Documentation") QGitRelease::tagName()
+### <a id='tag-name'/> [QString](https://doc.qt.io/qt-5/qstring.html "Qt Documentation") QGitRelease::tagName()
 
 Returns the release tag name that usually contains the version.
 
 ---
 
-### <a id='body'/> \[QString](http&#x3A;//doc.qt.io/qt-5/qstring.html "Qt Documentation") QGitRelease::body()
+### <a id='body'/> [QString](https://doc.qt.io/qt-5/qstring.html "Qt Documentation") QGitRelease::body()
 
 Returns the release body that usually contains the changelog.
 
 ---
 
-### <a id='url'/> \[QUrl](https&#x3A;//doc.qt.io/qt-5/qurl.html "Qt Documentation") QGitRelease::url()
+### <a id='url'/> [QUrl](https://doc.qt.io/qt-5/qurl.html "Qt Documentation") QGitRelease::url()
 
 Returns a link to the page of this release, which can be opened in the browser.
 
 ---
 
-### <a id='tar-url'/> \[QUrl](https&#x3A;//doc.qt.io/qt-5/qurl.html "Qt Documentation") QGitRelease::tarUrl()
+### <a id='tar-url'/> [QUrl](https://doc.qt.io/qt-5/qurl.html "Qt Documentation") QGitRelease::tarUrl()
 
 Returns a link to the source tarball.
 
 ---
 
-### <a id='zip-url'/> \[QUrl](https&#x3A;//doc.qt.io/qt-5/qurl.html "Qt Documentation") QGitRelease::zipUrl()
+### <a id='zip-url'/> [QUrl](https://doc.qt.io/qt-5/qurl.html "Qt Documentation") QGitRelease::zipUrl()
 
 Returns a link to the source zipball.
 
 ---
 
-### <a id='assets'/> \[QList](http&#x3A;//doc.qt.io/qt-5/qlist.html "Qt Documentation")&lt;\[QGitAsset](QGitAsset.md "Class documentation")> QGitRelease::assets()
+### <a id='assets'/> [QList](https://doc.qt.io/qt-5/qlist.html "Qt Documentation") \<[QGitAsset](QGitAsset.md "Class documentation")\> QGitRelease::assets()
 
-Returns the release assets represented by \[QGitAsset](QGitAsset.md "Class documentation").
+Returns the release assets represented by [QGitAsset](QGitAsset.md "Class documentation").
 
 ---
 
@@ -124,13 +124,13 @@ Returns the first asset number that constains _str_. If such an asset is not fou
 
 ---
 
-### <a id='created-at'/> \[QDateTime](https&#x3A;//doc.qt.io/qt-5/qdatetime.html "Qt Documentation") QGitRelease::createdAt()
+### <a id='created-at'/> [QDateTime](https://doc.qt.io/qt-5/qdatetime.html "Qt Documentation") QGitRelease::createdAt()
 
 Returns the creation time of the last commit on which the release is based.
 
 ---
 
-### <a id='published-at'/> \[QDateTime](https&#x3A;//doc.qt.io/qt-5/qdatetime.html "Qt Documentation") QGitRelease::publishedAt()
+### <a id='published-at'/> [QDateTime](https://doc.qt.io/qt-5/qdatetime.html "Qt Documentation") QGitRelease::publishedAt()
 
 Returns the release publication time.
 
