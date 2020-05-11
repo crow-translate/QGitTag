@@ -40,8 +40,9 @@ The **QGitRelease** class provides information about releases from GitHub.
 
 ## Signals
 
-|-----:|:-----------------------------------------|
-| void | [_finished_()](#finished) |
+| Return type | Data member                 |
+| ----------: | :-------------------------- |
+|        void | [**finished**()](#finished) |
 
 ## Member Type Documentation
 
