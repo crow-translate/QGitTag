@@ -18,7 +18,7 @@ if (tag.tagName() >= QCoreApplication::applicationVersion())
     out << "Update available: " + tag.url().toString() << endl;
 ```
 
-For real example of usage you can look into my other project: [Crow Translate](https://github.com/crow-translate/CrowTranslate "A simple and lightweight translator that allows to translate and say the selected text using the Google Translate API").
+For real example of usage you can look into my other project: [Crow Translate](https://github.com/crow-translate/crow-translate "A simple and lightweight translator that allows to translate and say the selected text using the Google Translate API").
 
 ## Installation
 
