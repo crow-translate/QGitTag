@@ -30,7 +30,9 @@ Example:
 
 ```cpp
 QGitTag tag;
-// ..
+
+// ...
+
 QTextStream out(stdout);
 out << "Asset: " + tag.assets().at(0).name() << endl; // Prints asset filename
 out << "Type: " + tag.assets().at(0).type() << endl; // Prints asset type

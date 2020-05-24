@@ -19,7 +19,7 @@ connect(&tag, &QGitTag::finished, [&tag] {
         out << "Update available: " + tag.url().toString() << endl;
 });
 
-return app.exec()
+return QCoreApplication::exec()
 ```
 
 For real example of usage you can look into my other project: [Crow Translate](https://github.com/crow-translate/crow-translate "A simple and lightweight translator that allows to translate and say the selected text using the Google Translate API").
