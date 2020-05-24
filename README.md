@@ -40,6 +40,10 @@ Then include the `qgittag.pri` file in your `.pro` project file:
 
 `include(src/third-party/qgittag/qgittag.pri)`
 
+or add the directory into `CMakeLists.txt`:
+
+`add_subdirectory(src/third-party/qgittag)`
+
 **Header:**
 
 ```cpp
