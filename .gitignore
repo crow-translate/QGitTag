@@ -2,4 +2,4 @@
 *.directory
 
 # Qt Creator project settings
-CMakeLists.txt*
+CMakeLists.txt.*
