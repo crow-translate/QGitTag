@@ -10,12 +10,16 @@ Example:
 ```cpp
 QCoreApplication app(argc, argv);
 QCoreApplication::setApplicationVersion("0.9.0");
-QTextStream out(stdout);
 
-QGitTag tag();
+QGitTag tag;
 tag.get("crow-translate", "Crow-Translate")
-if (tag.tagName() >= QCoreApplication::applicationVersion())
-    out << "Update available: " + tag.url().toString() << endl;
+connect(&tag, &QGitTag::finished, [&tag] {
+    QTextStream out(stdout);
+    if (tag.tagName() >= QCoreApplication::applicationVersion())
+        out << "Update available: " + tag.url().toString() << endl;
+});
+
+return app.exec()
 ```
 
 For real example of usage you can look into my other project: [Crow Translate](https://github.com/crow-translate/crow-translate "A simple and lightweight translator that allows to translate and say the selected text using the Google Translate API").

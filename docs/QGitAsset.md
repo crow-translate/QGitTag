@@ -29,7 +29,8 @@ A **QGitAsset** object can be obtained from the [QGitTag](docs/QGitTag.md "Class
 Example:
 
 ```cpp
-QGitTag tag("Shatur95", "Crow-Translate");
+QGitTag tag;
+// ..
 QTextStream out(stdout);
 out << "Asset: " + tag.assets().at(0).name() << endl; // Prints asset filename
 out << "Type: " + tag.assets().at(0).type() << endl; // Prints asset type
