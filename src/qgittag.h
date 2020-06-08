@@ -21,9 +21,9 @@
 #ifndef QGITTAG_H
 #define QGITTAG_H
 
-#include <QObject>
-
 #include "qgitasset.h"
+
+#include <QObject>
 
 class QNetworkAccessManager;
 class QNetworkReply;
