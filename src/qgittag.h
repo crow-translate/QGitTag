@@ -39,7 +39,7 @@ public:
         NoRelease
     };
 
-    QGitTag(QObject *parent = nullptr);
+    explicit QGitTag(QObject *parent = nullptr);
     void get(const QString &owner, const QString &repo, int number = 0);
 
     QString name() const;
