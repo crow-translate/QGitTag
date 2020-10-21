@@ -35,11 +35,8 @@ void QGitTag::get(const QString &owner, const QString &repo, int number)
 {
     m_tagNumber = number;
 
-    // Generate URL
-    QUrl apiUrl("https://api.github.com/repos/" + owner + "/" + repo + "/releases");
-
     // Send request
-    m_network->get(QNetworkRequest(apiUrl));
+    m_network->get(QNetworkRequest(QStringLiteral("https://api.github.com/repos/%1/%2/releases").arg(owner, repo)));
     QObject::connect(m_network, &QNetworkAccessManager::finished, this, &QGitTag::parseReply);
 }
 
