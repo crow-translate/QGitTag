@@ -1,9 +1,8 @@
 # QGitTag
 
 [![GitHub (pre-)release](https://img.shields.io/github/release/crow-translate/QGitTag/all.svg)](https://github.com/crow-translate/QGitTag/releases)
-[![Codacy grade](https://img.shields.io/codacy/grade/7f0c4a716e5c48a4a02f0063af77c025.svg)](https://app.codacy.com/project/crow-translate/QGitTag/dashboard)
 
-**QGitTag** is a library for **Qt5** that uses the GitHub API to provide information about releases that can be used to check for updates. [Detailed documentation](docs/QGitTag.md "Class documentation").
+**QGitTag** is a library for **Qt5** that uses the GitHub API to provide information about releases that can be used to check for updates.
 
 Example:
 
