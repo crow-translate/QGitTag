@@ -160,14 +160,14 @@ public:
      *
      * @return `true` if the release is a draft, otherwise returns `false`.
      */
-    bool draft() const;
+    bool isDraft() const;
 
     /**
      * @brief Check if prerelease
      *
      * @return `true` if the release is a prerelease, otherwise returns `false`.
      */
-    bool prerelease() const;
+    bool isPrerelease() const;
 
     /**
      * @brief Last error

@@ -105,12 +105,12 @@ int QGitTag::tagNumber() const
     return m_tagNumber;
 }
 
-bool QGitTag::draft() const
+bool QGitTag::isDraft() const
 {
     return m_draft;
 }
 
-bool QGitTag::prerelease() const
+bool QGitTag::isPrerelease() const
 {
     return m_prerelease;
 }
