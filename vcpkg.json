@@ -1,0 +1,7 @@
+{
+  "name": "qgittag",
+  "version-string": "1.0.9",
+  "dependencies": [
+    "qt5-base"
+  ]
+}
