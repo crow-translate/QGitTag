@@ -1,6 +1,6 @@
 {
   "name": "qgittag",
-  "version-string": "1.0.9",
+  "version-string": "latest",
   "dependencies": [
     "qt5-base"
   ]
